@@ -5,6 +5,23 @@ const koalaRouter = express.Router();
 
 
 // GET
+koalaRouter.get('/', (req, res) => {
+    console.log('GET /koalas');
+
+    let sqlText = 'SELECT * FROM koalas'
+
+    pool.query(sqlText)
+        .then((dbRes) => {
+            let theKoalas = dbRes.rows;
+            res.send(theKoalas);
+        })
+        .catch((dbErr) => {
+            // Log that there was an issue with this function
+            console.log('SQL query in GET /koalas failed:', dbErr);
+            // Send "Internal Server Error" status to client
+            res.sendStatus(500)
+        })
+})
 
 
 // POST
