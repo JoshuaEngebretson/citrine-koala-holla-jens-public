@@ -34,8 +34,7 @@ As a group, establish what the high level tasks will be and break those down int
 
 On **one** computer, setup your project repo using the _Use this Template_ feature in Github. Then add **all** members of the team as contributors. Each member of the team can now clone the same repository.
 
-![](../images/github-manage-access.png)
-
+![github-manage-access](https://user-images.githubusercontent.com/9385810/231868397-1db4c6a9-0e30-45d5-9e24-45114c9a874b.png)
 
 > NOTE: Do not **fork** your team repository. You should all be contributing to the **same** repository.
 
