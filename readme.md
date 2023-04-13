@@ -1,5 +1,7 @@
 **PLEASE "Use Template" for this assignment! Don't Fork it.**
 
+[Group Project Instructions](instructions.md)
+
 This must stop:
 ---------------
 ![Nevar again](https://i.makeagif.com/media/8-22-2014/GO_DT4.gif)
