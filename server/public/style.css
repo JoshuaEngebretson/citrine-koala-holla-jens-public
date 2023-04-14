@@ -1,7 +1,9 @@
 .icon{
-    max-height: 200px;
+    max-height: 300px;
     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
-
+    float: left;
+    width: 100px;
+    height: 100px;
     background: rgb(84,207,46);
     background: radial-gradient(circle, rgba(84,207,46,1) 0%, rgba(33,96,17,1) 100%);
 }
@@ -20,5 +22,14 @@ body{
 header{
     
     background-color: skyblue;
+    
 }
 
+.address{
+    position: relative;
+    top: 18px;
+    left: 10px;
+    margin-left: 20px;
+    display:flex ;
+    flex-direction: column;
+}
