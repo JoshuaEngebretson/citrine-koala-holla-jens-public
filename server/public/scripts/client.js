@@ -7,6 +7,8 @@ $( document ).ready( function(){
   // load existing koalas on page load
   getKoalas();
 
+  $('#viewKoalas').on('click', '.deleteKoalaBtn', deleteKoala)
+
 }); // end doc ready
 
 function setupClickListeners() {
@@ -66,7 +68,7 @@ function saveKoala( newKoala ){
 }
 
 function deleteKoala() {
-  let idToDelete = $(this).parent().parent.data('id');
+  let idToDelete = $(this).parent().parent().data('id');
 
   $.ajax({
     method: 'DELETE',
