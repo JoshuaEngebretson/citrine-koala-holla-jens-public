@@ -43,21 +43,39 @@ function getKoalas() {
     //loop through the koalas from response
     //  and render onto the DOM
     for(let koala of response) {
-      $('#viewKoalas').append(`
+      if (koala.ready_to_transfer === false) {
+        $('#viewKoalas').append(`
+          <tr data-id=${koala.id}>
+            <td>${koala.name}</td>
+            <td>${koala.gender}</td>
+            <td>${koala.age}</td>
+            <td>${koala.ready_to_transfer}</td>
+            <td>${koala.notes}</td>
+            <td>
+              <button class="transferBtn">Ready for Transfer</button>
+            </td>
+            <td>
+              <button class="deleteKoalaBtn">Delete</button>
+            </td>
+          </tr>
+        `)
+      }
+      else {
+        $('#viewKoalas').append(`
         <tr data-id=${koala.id}>
           <td>${koala.name}</td>
           <td>${koala.gender}</td>
           <td>${koala.age}</td>
           <td>${koala.ready_to_transfer}</td>
           <td>${koala.notes}</td>
-          <td>
-            <button class="transferBtn">Ready for Transfer</button>
-          </td>
+          <td><!-- This space left empty due to koala already ready for transfer --></td>
           <td>
             <button class="deleteKoalaBtn">Delete</button>
           </td>
         </tr>
       `)
+      }
+
     }
   })
 } // end getKoalas
@@ -94,7 +112,7 @@ function readyForTransfer() {
     method: 'PUT',
     url: `/koalas/${idToUpdate}`,
     data: {
-      ready_to_transfer: `Y`
+      ready_to_transfer: true
     }
   }).then(function (response) {
     //When readyForTransfer works update the DOM
