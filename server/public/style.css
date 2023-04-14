@@ -12,6 +12,17 @@ body{
     background: radial-gradient(circle, rgba(84,207,46,1) 0%, rgba(33,96,17,1) 100%);
 }
 
+.iconTwo{
+    max-height: 200px;
+    float: right;    
+    background-blend-mode: darken, luminosity;
+    position: absolute;
+        top: 10px;
+        right: 10px;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+
+}
+
 .table{ 
     border-style: solid;
     border: 1px bold;
@@ -19,7 +30,6 @@ body{
 }
 
 header{
-    
     background-color: skyblue;
 }
 
