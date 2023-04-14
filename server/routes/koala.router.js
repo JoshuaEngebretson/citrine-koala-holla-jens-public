@@ -1,8 +1,8 @@
 const express = require('express');
 const koalaRouter = express.Router();
-const pool = require('../modules/pool.js');
 
 // DB CONNECTION
+const pool = require('../modules/pool.js');
 
 
 // GET
@@ -29,7 +29,26 @@ koalaRouter.get('/', (req, res) => {
 
 
 // PUT
+koalaRouter.put('/:id', (req, res) => {
+    // req.params should look like: { id: '3' }
+    let theIdToUpdate = req.params.id;
+    let readyToTransfer = req.body.type;
+    let sqlText = `
+        UPDATE "koalas"
+            SET "ready_to_transfer"=$1
+            WHERE "id"=$2;
+    `
+    let sqlValues = [readyToTransfer, theIdToUpdate];
 
+    pool.query(sqlText, sqlValues)
+        .then((dbRes) => {
+            res.sendStatus(200);
+        })
+        .catch((dbErr) => {
+            console.log('PUT /koalaRouter fail:', dbErr);
+            res.sendStatus(500);
+        })
+})
 
 // DELETE
 koalaRouter.delete('/:id', (req, res) => {
