@@ -36,10 +36,10 @@ function getKoalas() {
   $.ajax({
     method: 'GET',
     url: '/koalas'
-  }).then(function(response) {
+  }).then(function (response) {
     //empty out the viewKoalas table
     $('#viewKoalas').empty();
-    
+
     //loop through the koalas from response
     //  and render onto the DOM
     for(let koala of response) {
@@ -83,7 +83,15 @@ function getKoalas() {
 function saveKoala(newKoala) {
   console.log('in saveKoala', newKoala);
   // ajax call to server to get koalas
-
+  $.ajax({
+    method: 'POST',
+    url: "/koalas",
+    data: newKoala
+  }).then(function (response) {
+    console.log(response);
+  }).catch(function (error) {
+    console.log('The "/koalas" ajax post request failed with error: ', error);
+  })
 }
 
 function deleteKoala() {
@@ -93,7 +101,7 @@ function deleteKoala() {
   $.ajax({
     method: 'DELETE',
     url: `/koalas/${idToDelete}`
-  }).then(function(response) {
+  }).then(function (response) {
     //Call on getKoalas to update the DOM
     getKoalas();
   }).catch(function(error) {
