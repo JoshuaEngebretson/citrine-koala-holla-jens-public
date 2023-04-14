@@ -43,7 +43,7 @@ koalaRouter.post('/', (req, res) => {
 })
 
 
-// PUT
+// PUT: added this to file
 koalaRouter.put('/:id', (req, res) => {
     // req.params should look like: { id: '3' }
     let theIdToUpdate = req.params.id;
