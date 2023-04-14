@@ -8,7 +8,7 @@ const koalaRouter = express.Router();
 koalaRouter.get('/', (req, res) => {
     console.log('GET /koalas');
 
-    let sqlText = 'SELECT * FROM koalas'
+    let sqlText = 'SELECT * FROM "koalas";';
 
     pool.query(sqlText)
         .then((dbRes) => {
