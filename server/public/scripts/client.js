@@ -9,6 +9,7 @@ $(document).ready(function () {
 
   $('#viewKoalas').on('click', '.deleteKoalaBtn', deleteKoala)
 
+  $('#viewKoalas').on('click', '.transferBtn', readyForTransfer)
 }); // end doc ready
 
 function setupClickListeners() {
@@ -68,6 +69,7 @@ function saveKoala(newKoala) {
 }
 
 function deleteKoala() {
+  //Grab the data-id from the row this button is in
   let idToDelete = $(this).parent().parent().data('id');
 
   $.ajax({
@@ -77,6 +79,30 @@ function deleteKoala() {
     //Call on getKoalas to update the DOM
     getKoalas();
   }).catch(function(error) {
-    alert('Error deleting this koala, error -->', error)
+    //Alert the user of the issue
+    alert('There was an error deleting this koala')
+    //Log the error in the console log
+    console.log(`Error Deleting ${idToDelete} error --> ${error}`);
+  })
+}
+
+function readyForTransfer() {
+  //Grab the data-id from the row this button is in
+  let idToUpdate = $(this).parent().parent().data('id');
+
+  $.ajax({
+    method: 'PUT',
+    url: `/koalas/${idToUpdate}`,
+    data: {
+      ready_to_transfer: `Y`
+    }
+  }).then(function (response) {
+    //When readyForTransfer works update the DOM
+    getKoalas();
+  }).catch(function(error) {
+    //Alert the user of the issue
+    alert('There was an error updating ready to transfer');
+    //Log the error in the console log
+    console.log(`Error readyForTransfer on ${idToUpdate}, error --> ${error}`);
   })
 }
