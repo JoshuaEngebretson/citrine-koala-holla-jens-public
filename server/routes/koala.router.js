@@ -26,6 +26,21 @@ koalaRouter.get('/', (req, res) => {
 
 
 // POST
+koalaRouter.post('/', (req, res) => {
+    console.log('POST /koalas');
+    let newKoala = req.body;
+    let sqlText = `INSERT INTO "koalas" ('name', 'age', 'gender','ready_for_transfer','notes');
+                VALUES($1,$2,$3,$4,$5);`;
+    let sqlValues = [newKoala.name, newKoala.age, newKoala.gender, newKoala.readyForTransfer, newKoala.notes];
+    pool.query(sqlText, sqlValue)
+        .then((dbRes) => {
+            res.sendStatus(201);
+        })
+        .catch(error => {
+            console.log(`Error adding new koala`, error);
+            res.sendStatus(500);
+        })
+})
 
 
 // PUT
